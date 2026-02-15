@@ -327,6 +327,27 @@ a.ghost {
   cursor: pointer;
 }
 
+.faq details p {
+  margin-bottom: 12px;
+  line-height: 1.7;
+}
+
+.faq details ul,
+.faq details ol {
+  margin: 12px 0;
+  padding-left: 24px;
+  line-height: 1.7;
+}
+
+.faq details li {
+  margin-bottom: 6px;
+}
+
+.faq details strong {
+  color: var(--primary);
+  font-weight: 600;
+}
+
 .contact-form {
   margin-top: 16px;
   display: grid;
