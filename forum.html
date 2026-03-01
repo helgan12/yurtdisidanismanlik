@@ -4,6 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Sık Sorulan Sorular | Yurtdışı Danışmanlık</title>
+    <meta
+      name="description"
+      content="Almanya'da mesleki eğitim, başvuru süreci, dil gereksinimleri ve sektörler hakkında sık sorulan sorular ve cevaplar."
+    />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -22,16 +26,16 @@
             <p class="brand-subtitle">Almanya odaklı kariyer fırsatları</p>
           </div>
         </a>
-        <button class="menu-toggle" aria-label="Menüyü aç/kapat">
+        <button class="menu-toggle" aria-label="Menüyü aç/kapat" aria-expanded="false" aria-controls="main-nav">
           <span></span>
           <span></span>
           <span></span>
         </button>
-        <nav class="nav">
+        <nav class="nav" id="main-nav" role="navigation" aria-label="Ana navigasyon">
           <a href="nedir.html" class="nav-link">Nedir?</a>
           <a href="basvuru.html" class="nav-link">Başvuru</a>
           <a href="forum.html" class="nav-link active">Sık Sorulan Sorular</a>
-          <a href="https://example.com" class="nav-link" target="_blank" rel="noopener">Almanya'da Eğitim</a>
+          <a href="forum.html" class="nav-link">Almanya'da Eğitim</a>
           <a href="iletisim.html" class="nav-link">İletişim</a>
         </nav>
       </div>
@@ -267,7 +271,6 @@
     <footer class="site-footer">
       <div class="container footer-inner">
         <p>© 2026 Yurtdışı Danışmanlık. Tüm hakları saklıdır.</p>
-        
       </div>
     </footer>
 

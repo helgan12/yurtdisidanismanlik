@@ -1,51 +1,43 @@
-const tabs = Array.from(document.querySelectorAll(".tab"));
-const panels = Array.from(document.querySelectorAll(".tab-panel"));
-const actionButtons = Array.from(document.querySelectorAll("[data-tab]"));
-
-const activateTab = (tabName) => {
-  tabs.forEach((tab) => {
-    const isActive = tab.dataset.tab === tabName;
-    tab.classList.toggle("active", isActive);
-    tab.setAttribute("aria-selected", String(isActive));
-  });
-
-  panels.forEach((panel) => {
-    panel.classList.toggle("active", panel.id === `panel-${tabName}`);
-  });
-
-  const activePanel = document.getElementById(`panel-${tabName}`);
-  if (activePanel) {
-    activePanel.scrollIntoView({ behavior: "smooth", block: "start" });
-  }
-};
-
-actionButtons.forEach((button) => {
-  button.addEventListener("click", () => {
-    const tabName = button.dataset.tab;
-    if (!tabName) return;
-    activateTab(tabName);
-  });
-});
-
-const tabList = document.querySelector(".tab-list");
-if (tabList) {
-  tabList.addEventListener("keydown", (event) => {
-    if (!['ArrowRight', 'ArrowLeft'].includes(event.key)) return;
-    event.preventDefault();
-    const currentIndex = tabs.findIndex((tab) => tab.classList.contains("active"));
-    if (currentIndex === -1) return;
-    const direction = event.key === 'ArrowRight' ? 1 : -1;
-    const nextIndex = (currentIndex + direction + tabs.length) % tabs.length;
-    const nextTab = tabs[nextIndex];
-    activateTab(nextTab.dataset.tab);
-    nextTab.focus();
-  });
-}
-
 const contactForm = document.querySelector(".contact-form");
 if (contactForm) {
   contactForm.addEventListener("submit", (event) => {
     event.preventDefault();
+    
+    // Form validasyonu
+    const formData = new FormData(contactForm);
+    const name = formData.get("name")?.trim();
+    const email = formData.get("email")?.trim();
+    const phone = formData.get("phone")?.trim();
+    const message = formData.get("message")?.trim();
+    
+    // Basit validasyon
+    if (!name || !email || !phone || !message) {
+      alert("Lütfen tüm alanları doldurun.");
+      return;
+    }
+    
+    // Email format kontrolü
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      alert("Lütfen geçerli bir e-posta adresi girin.");
+      return;
+    }
+    
+    // XSS koruması - HTML karakterlerini temizle
+    const sanitize = (str) => {
+      const div = document.createElement("div");
+      div.textContent = str;
+      return div.innerHTML;
+    };
+    
+    // Form verilerini güvenli şekilde işle (gerçek uygulamada backend'e gönderilir)
+    console.log("Form gönderildi:", {
+      name: sanitize(name),
+      email: sanitize(email),
+      phone: sanitize(phone),
+      message: sanitize(message)
+    });
+    
     alert("Teşekkürler! En kısa sürede sizinle iletişime geçeceğiz.");
     contactForm.reset();
   });
@@ -57,6 +49,9 @@ const nav = document.querySelector(".nav");
 if (menuToggle && nav) {
   menuToggle.addEventListener("click", () => {
     nav.classList.toggle("open");
+    // ARIA attribute güncelle
+    const isOpen = nav.classList.contains("open");
+    menuToggle.setAttribute("aria-expanded", String(isOpen));
   });
 
   // Menü linklerine tıklandığında mobil menüyü kapat
@@ -64,6 +59,16 @@ if (menuToggle && nav) {
   navLinks.forEach((link) => {
     link.addEventListener("click", () => {
       nav.classList.remove("open");
+      menuToggle.setAttribute("aria-expanded", "false");
     });
+  });
+  
+  // ESC tuşu ile menüyü kapat
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && nav.classList.contains("open")) {
+      nav.classList.remove("open");
+      menuToggle.setAttribute("aria-expanded", "false");
+      menuToggle.focus();
+    }
   });
 }

@@ -230,52 +230,6 @@ a.ghost {
   margin-right: 8px;
 }
 
-.tabs {
-  padding: 50px 0 90px;
-}
-
-.tab-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin-bottom: 26px;
-}
-
-.tab {
-  background: #fff;
-  border: 1px solid var(--border);
-  padding: 12px 18px;
-  border-radius: 999px;
-  font-weight: 600;
-  color: var(--muted);
-  cursor: pointer;
-  box-shadow: 0 6px 16px rgba(15, 23, 42, 0.05);
-}
-
-.tab.active {
-  background: linear-gradient(135deg, #1f4b99, #2b6cb0);
-  color: #fff;
-  border-color: transparent;
-  box-shadow: 0 12px 22px rgba(31, 75, 153, 0.25);
-}
-
-.tab-panel {
-  display: none;
-  background: var(--surface);
-  border-radius: 22px;
-  border: 1px solid var(--border);
-  padding: 30px;
-  box-shadow: var(--shadow);
-}
-
-.tab-panel.active {
-  display: block;
-}
-
-.tab-panel h2 {
-  margin-bottom: 12px;
-}
-
 .info-grid {
   margin-top: 20px;
   display: grid;
@@ -491,5 +445,65 @@ a.ghost {
 
   .content-grid {
     grid-template-columns: 1fr;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+  }
+
+  .primary, .ghost {
+    width: 100%;
+    text-align: center;
+  }
+
+  .contact-form {
+    gap: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    width: 95vw;
+  }
+
+  .brand-title {
+    font-size: 0.95rem;
+  }
+
+  .brand-subtitle {
+    font-size: 0.75rem;
+  }
+
+  .hero-content h1 {
+    font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+  }
+
+  .page-hero h1 {
+    font-size: clamp(1.4rem, 2vw, 1.8rem);
+  }
+
+  .hero-card {
+    padding: 20px;
+  }
+
+  .content-card {
+    padding: 20px;
+  }
+
+  .info-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .faq details {
+    padding: 12px 16px;
+  }
+
+  .contact-form label {
+    gap: 4px;
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    padding: 10px 12px;
   }
 }
