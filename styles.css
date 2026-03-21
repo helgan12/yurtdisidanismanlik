@@ -67,6 +67,12 @@ main {
   gap: 12px;
 }
 
+.brand-logo {
+  height: 56px;
+  width: auto;
+  display: block;
+}
+
 .brand-badge {
   width: 48px;
   height: 48px;
