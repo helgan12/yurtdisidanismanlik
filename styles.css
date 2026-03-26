@@ -79,7 +79,7 @@ main {
 
 .brand-logo {
   display: block;
-  height: 56px;
+  height: 60px;
   width: auto;
   max-width: 100%;
   object-fit: contain;
@@ -330,6 +330,33 @@ a.ghost {
   gap: 14px;
 }
 
+.form-notification {
+  margin-top: 16px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  border: 1px solid transparent;
+}
+
+.form-notification--error {
+  background: rgba(220, 38, 38, 0.06);
+  border-color: rgba(220, 38, 38, 0.35);
+  color: #7f1d1d;
+}
+
+.form-notification--success {
+  background: rgba(22, 163, 74, 0.06);
+  border-color: rgba(22, 163, 74, 0.35);
+  color: #065f46;
+}
+
+.form-notification-icon {
+  font-weight: 700;
+}
+
 .contact-form label {
   display: grid;
   gap: 6px;
@@ -393,6 +420,107 @@ a.ghost {
   display: grid;
   gap: 24px;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+/* HOME SECTIONS */
+.home-section {
+  padding-top: 10px;
+}
+
+.home-intro-grid {
+  align-items: stretch;
+}
+
+.home-photo-card {
+  position: relative;
+}
+
+.home-photo {
+  margin-top: 16px;
+  border-radius: 18px;
+  height: 180px;
+  background:
+    radial-gradient(circle at top left, rgba(31, 75, 153, 0.35), transparent 55%),
+    radial-gradient(circle at bottom right, rgba(245, 158, 11, 0.5), transparent 60%),
+    linear-gradient(135deg, #0f172a, #1e293b);
+  box-shadow: var(--shadow-soft);
+  position: relative;
+  overflow: hidden;
+}
+
+.home-photo::after {
+  content: "Uygulamalı eğitim alanı";
+  position: absolute;
+  left: 16px;
+  bottom: 14px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.85);
+  color: #e5e7eb;
+  font-size: 0.8rem;
+}
+
+.home-photo-caption {
+  margin-top: 10px;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.home-steps .content-card {
+  margin-top: 0;
+}
+
+.steps-list {
+  list-style: none;
+  margin-top: 10px;
+  display: grid;
+  gap: 18px;
+}
+
+.steps-list li {
+  padding: 14px 16px;
+  border-radius: 18px;
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+}
+
+.steps-list h3 {
+  margin-bottom: 6px;
+  font-size: 1.05rem;
+  color: var(--primary-dark);
+}
+
+.home-metrics-card {
+  display: grid;
+  gap: 26px;
+}
+
+.home-metrics-grid {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+}
+
+.home-metrics-grid h3 {
+  font-size: 1.4rem;
+  color: var(--primary-dark);
+  margin-bottom: 4px;
+}
+
+.home-metrics-grid p {
+  color: var(--muted);
+}
+
+.home-metrics-cta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.home-metrics-cta p {
+  max-width: 520px;
 }
 
 /* FOOTER */
