@@ -109,3 +109,41 @@ if (menuToggle && nav) {
     }
   });
 }
+
+// Favicon'u logo.png'den okunabilir boyutta üret
+window.addEventListener("DOMContentLoaded", () => {
+  const existingFavicon = document.querySelector("link[rel='icon']");
+
+  const img = new Image();
+  img.src = "assets/ikon.png";
+  img.onload = () => {
+    const size = 32; // tarayıcı sekmesi için standart favicon boyutu
+    const canvas = document.createElement("canvas");
+    canvas.width = size;
+    canvas.height = size;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+
+    // Arka planı beyaz yap
+    ctx.fillStyle = "#ffffff";
+    ctx.fillRect(0, 0, size, size);
+
+    // Logonun orta karesini kırp ve ölçekle
+    const cropSize = Math.min(img.width, img.height);
+    const sx = (img.width - cropSize) / 2;
+    const sy = (img.height - cropSize) / 2;
+    ctx.drawImage(img, sx, sy, cropSize, cropSize, 0, 0, size, size);
+
+    const faviconUrl = canvas.toDataURL("image/png");
+
+    if (existingFavicon) {
+      existingFavicon.setAttribute("href", faviconUrl);
+    } else {
+      const link = document.createElement("link");
+      link.rel = "icon";
+      link.type = "image/png";
+      link.href = faviconUrl;
+      document.head.appendChild(link);
+    }
+  };
+});
